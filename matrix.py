@@ -52,7 +52,7 @@ if __name__=="__main__":
     t = timeit.Timer(lambda: check(A, B, C, TRIALS))
     check_time.append(t.timeit(number=10))
   
-  # Plot the results
+  # Plot running time
   plt.figure()
   plt.plot(np.linspace(10,MAX_SIZE,num=MAX_SIZE//10), manual_check_time, label="Manual")
   plt.plot(np.linspace(10,MAX_SIZE,num=MAX_SIZE//10), check_time, label="Probabilistic with {} trials".format(TRIALS))

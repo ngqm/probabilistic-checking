@@ -92,11 +92,11 @@ def visualise_matrix(S, title):
 if __name__=="__main__":
 
   # Visualise multiplication tables
-  # n = 5
-  # S = additive(n)
-  # visualise_matrix(S, "Additive Group Modulo {}".format(n))
-  # S = special_table(n)
-  # visualise_matrix(S, "Only One Nonassociative Triple")
+  n = 5
+  S = additive(n)
+  visualise_matrix(S, "Additive Group Modulo {}".format(n))
+  S = special_table(n)
+  visualise_matrix(S, "Only One Nonassociative Triple")
 
   # Check associativity
   TRIALS = 35 # probability of failure is under 1e-2
@@ -110,7 +110,7 @@ if __name__=="__main__":
     t = timeit.Timer(lambda: check(S, TRIALS))
     check_time.append(t.timeit(number=10))
 
-  # Plot the results
+  # Plot running time
   plt.figure()
   plt.plot(np.linspace(5,MAX_SIZE,num=MAX_SIZE//5), manual_check_time, label="Manual")
   plt.plot(np.linspace(5,MAX_SIZE,num=MAX_SIZE//5), check_time, label="Probabilistic with {} trials".format(TRIALS))
@@ -118,4 +118,23 @@ if __name__=="__main__":
   plt.xlabel("Size of set")
   plt.ylabel("Time (s)")
   plt.title("Probabilistic Associativity Check")
+  plt.show()
+
+  # Check accuracy
+  RUNS = 500
+  MAX_TRIALS = 25
+  S = special_table(5)
+  accuracy_list = []
+  for trials in range(1, MAX_TRIALS+1):
+    accuracy = sum([1 for _ in range(RUNS) if 
+      check(S, trials)=="NONASSOCIATIVE"])/RUNS
+    accuracy_list.append(accuracy)
+  print("Accuracy: {}".format(accuracy_list))
+
+  # Plot accuracy
+  plt.figure()
+  plt.plot(range(1, MAX_TRIALS+1), accuracy_list)
+  plt.xlabel("Number of trials")
+  plt.ylabel("Accuracy")
+  plt.title("Accuracy of Probabilistic Associativity Check")
   plt.show()
