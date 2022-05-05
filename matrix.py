@@ -6,6 +6,7 @@ import numpy as np
 import timeit
 import matplotlib.pyplot as plt
 
+
 def manual_check(A, B, C):
   """
   Manually check whether AB=C. Return CORRECT or INCORRECT.
@@ -39,6 +40,7 @@ def generate_matrix(n):
 
 
 if __name__=="__main__":
+
   TRIALS = int(np.log2(100)) # probability of failure is under 1e-2
   MAX_SIZE = int(1e3)
   manual_check_time = []
@@ -59,6 +61,3 @@ if __name__=="__main__":
   plt.ylabel("Time (s)")
   plt.title("$n$-by-$n$ Matrix Multiplication Checking")
   plt.show()
-
-  print("Manual check:", manual_check_time)
-  print("Probabilistic check:", check_time)
