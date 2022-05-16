@@ -36,6 +36,7 @@ def generate_matrix(n):
   A = np.random.randn(n, n)
   B = np.random.randn(n, n)
   C = A@B
+  C[n-1,n-1] += 1
   return A, B, C
 
 
