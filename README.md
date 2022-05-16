@@ -49,4 +49,4 @@ For the multiplcation above, we run the probabilistic method
 with different numbers of trials to see the
 improvement in accurracy:
 
-![accurracy](accurracy.png)
+![accuracy](accuracy.png)
