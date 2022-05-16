@@ -31,7 +31,7 @@ the theoretical error rate is less than 1 percent.
 We generate a binary operation which is almost associative,
 except for one triple of elements:
 
-![non_associative](non_associative.png)
+![nonassociative](nonassociative.png)
 
 We then check whether the operation is associative.
 The deterministic method manually checks every triple,
